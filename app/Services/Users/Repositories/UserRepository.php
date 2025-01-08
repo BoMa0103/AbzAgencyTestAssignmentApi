@@ -8,12 +8,12 @@
 namespace App\Services\Users\Repositories;
 
 use App\Models\User;
-use App\Services\Users\DTO\SearchUserDTO;
+use App\Services\Users\DTO\SearchUsersDTO;
 use Illuminate\Support\Collection;
 
 class UserRepository
 {
-    public function getUsers(SearchUserDTO $dto): Collection
+    public function getUsers(SearchUsersDTO $dto): Collection
     {
         $limit = $dto->getCount();
         $offset = $dto->getCount() * ($dto->getPage() - 1);

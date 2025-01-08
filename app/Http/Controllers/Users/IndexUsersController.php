@@ -8,6 +8,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Users\Requests\IndexUsersRequest;
+use App\Http\Controllers\Users\Resources\UserResource;
 use Illuminate\Http\JsonResponse;
 
 class IndexUsersController extends BaseUsersController
@@ -28,7 +29,7 @@ class IndexUsersController extends BaseUsersController
             'total' => $this->getUsersService()->getUsersCount(),
             'page' => $request->getDTO()->getPage(),
             'count' => $request->getDTO()->getCount(),
-            'users' => $users->toArray(),
+            'users' => UserResource::collection($users),
         ]);
     }
 }

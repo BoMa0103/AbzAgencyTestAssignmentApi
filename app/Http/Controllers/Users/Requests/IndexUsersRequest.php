@@ -7,7 +7,7 @@
 
 namespace App\Http\Controllers\Users\Requests;
 
-use App\Services\Users\DTO\SearchUserDTO;
+use App\Services\Users\DTO\SearchUsersDTO;
 
 class IndexUsersRequest
 {
@@ -19,9 +19,9 @@ class IndexUsersRequest
         ];
     }
 
-    public function getDTO(): SearchUserDTO
+    public function getDTO(): SearchUsersDTO
     {
-        return SearchUserDTO::fromArray([
+        return SearchUsersDTO::fromArray([
             'page' => request('page'),
             'count' => request('count'),
         ]);

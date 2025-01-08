@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers\Users;
 
+use App\Http\Controllers\Users\Resources\UserResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class ShowUserController extends BaseUsersController
 
         return response()->json([
             'success' => true,
-            'user' => $user->toArray(),
+            'user' => new UserResource($user),
         ]);
     }
 }

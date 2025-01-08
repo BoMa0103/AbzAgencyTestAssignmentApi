@@ -1,31 +1,26 @@
 <?php
 /**
- * Description of UserResource.php
+ * Description of PositionResource.php
  * @copyright Copyright (c) DOTSPLATFORM, LLC
  * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
  */
 
-namespace App\Http\Controllers\Users\Resources;
+namespace App\Http\Controllers\Positions\Resources;
 
-use App\Models\User;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin User
+ * @mixin Position
  */
-class UserResource extends JsonResource
+class PositionResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'position_id' => $this->position_id,
-            'position' => $this->position,
-            'photo' => $this->photo,
         ];
     }
 }

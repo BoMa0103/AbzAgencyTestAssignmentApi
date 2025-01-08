@@ -4,8 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d8a21da37c8e3473f747dd269a4227b",
+    "content-hash": "b58b3e1e1454fc15db776b2fb3b7e662",
     "packages": [
+        {
+            "name": "artwl/tinify-laravel",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artwl/tinify-laravel.git",
+                "reference": "b51c7d2b3e8d1043a5cde572ff65a60907fa8db0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artwl/tinify-laravel/zipball/b51c7d2b3e8d1043a5cde572ff65a60907fa8db0",
+                "reference": "b51c7d2b3e8d1043a5cde572ff65a60907fa8db0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "*",
+                "php": ">=5.5.0",
+                "tinify/tinify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Tinify": "Artwl\\LaravelTinify\\Facades\\Tinify"
+                    },
+                    "providers": [
+                        "Artwl\\LaravelTinify\\LaravelTinifyServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Artwl\\LaravelTinify\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "yasmuru",
+                    "email": "yasmuru@gmail.com"
+                }
+            ],
+            "description": "Tinify API support with laravel",
+            "keywords": [
+                "laravel",
+                "tinify",
+                "tinypng"
+            ],
+            "support": {
+                "source": "https://github.com/artwl/tinify-laravel/tree/3.0.0"
+            },
+            "time": "2023-05-22T02:57:21+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.1",

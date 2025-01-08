@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers\Positions;
 
+use App\Http\Controllers\Positions\Resources\PositionResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class IndexPositionsController extends BasePositionsController
 
         return response()->json([
             'success' => true,
-            'positions' => $positions->toArray(),
+            'positions' => new PositionResource($positions),
         ]);
     }
 }

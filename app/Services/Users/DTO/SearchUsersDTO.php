@@ -7,7 +7,7 @@
 
 namespace App\Services\Users\DTO;
 
-readonly class SearchUserDTO
+readonly class SearchUsersDTO
 {
     private const int DEFAULT_PAGE = 1;
 
@@ -25,6 +25,14 @@ readonly class SearchUserDTO
             page: $data['page'] ?? self::DEFAULT_PAGE,
             count: $data['count'] ?? self::DEFAULT_COUNT,
         );
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'page' => $this->page,
+            'count' => $this->count,
+        ];
     }
 
     public function getPage(): int

@@ -7,9 +7,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "artwl/tinify-laravel": "^3.0",
         "laravel/framework": "^11.31",
-        "laravel/tinker": "^2.9",
-        "tinify/tinify": "^1.6"
+        "laravel/tinker": "^2.9"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.5",

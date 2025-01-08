@@ -29,6 +29,17 @@ readonly class StoreUserDTO
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'position_id' => $this->position_id,
+            'photo' => $this->photo,
+        ];
+    }
+
     public function getName(): string
     {
         return $this->name;
