@@ -11,6 +11,9 @@ use App\Models\Token;
 use App\Services\Tokens\Handlers\CreateTokenHandler;
 use App\Services\Tokens\Handlers\InvalidateTokenHandler;
 use App\Services\Tokens\Repositories\TokenRepository;
+use App\Services\Tokens\Validators\RequestTokenValidator;
+use Exception;
+use Illuminate\Http\Request;
 
 class TokensService
 {
@@ -18,6 +21,7 @@ class TokensService
         private readonly TokenRepository $tokenRepository,
         private readonly CreateTokenHandler $createTokenHandler,
         private readonly InvalidateTokenHandler $invalidateTokenHandler,
+        private readonly RequestTokenValidator $requestTokenValidator,
     ) {
     }
 
@@ -29,6 +33,14 @@ class TokensService
     public function findToken(string $token): ?Token
     {
         return $this->tokenRepository->findToken($token);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function validateToken(Request $request): Token
+    {
+        return $this->requestTokenValidator->validate($request);
     }
 
     public function invalidateToken(Token $token): void

@@ -24,7 +24,7 @@ class CreateTokenHandler
 
         return $this->tokenRepository->createToken([
             'token' => $token,
-            'expires_at' => now()->addMinutes(40),
+            'expires_in' => now()->addMinutes(40)->timestamp,
         ]);
     }
 }

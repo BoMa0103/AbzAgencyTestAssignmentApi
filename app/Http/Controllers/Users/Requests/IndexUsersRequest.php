@@ -8,8 +8,9 @@
 namespace App\Http\Controllers\Users\Requests;
 
 use App\Services\Users\DTO\SearchUsersDTO;
+use Illuminate\Foundation\Http\FormRequest;
 
-class IndexUsersRequest
+class IndexUsersRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -22,8 +23,8 @@ class IndexUsersRequest
     public function getDTO(): SearchUsersDTO
     {
         return SearchUsersDTO::fromArray([
-            'page' => request('page'),
-            'count' => request('count'),
+            'page' => $this->get('page'),
+            'count' => $this->get('count'),
         ]);
     }
 }

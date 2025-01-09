@@ -8,8 +8,9 @@
 namespace App\Http\Controllers\Users\Requests;
 
 use App\Services\Users\DTO\StoreUserDTO;
+use Illuminate\Foundation\Http\FormRequest;
 
-class CreateUserRequest
+class CreateUserRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -18,18 +19,18 @@ class CreateUserRequest
             'email' => 'required|email',
             'phone' => 'required|string',
             'position_id' => 'required|numeric',
-            'photo' => 'required|image|max:5120',
+            'photo' => 'required|string',
         ];
     }
 
     public function getDTO(): StoreUserDTO
     {
         return StoreUserDTO::fromArray([
-            'name' => request('name'),
-            'email' => request('email'),
-            'phone' => request('phone'),
-            'position_id' => request('position_id'),
-            'photo' => request('photo'),
+            'name' => $this->get('name'),
+            'email' => $this->get('email'),
+            'phone' => $this->get('phone'),
+            'position_id' => $this->get('position_id'),
+            'photo' => $this->get('photo'),
         ]);
     }
 }

@@ -12,7 +12,10 @@ use App\Models\User;
 use App\Services\Images\ImageService;
 use App\Services\Positions\Repositories\PositionRepository;
 use App\Services\Users\DTO\StoreUserDTO;
+use App\Services\Users\Exceptions\UniqueUserEmailException;
+use App\Services\Users\Exceptions\UniqueUserPhoneException;
 use App\Services\Users\Repositories\UserRepository;
+use App\Services\Users\Validators\CreateUserValidator;
 use InvalidArgumentException;
 use Nette\Utils\ImageException;
 
@@ -22,14 +25,19 @@ class CreateUserHandler
         private readonly ImageService $imageService,
         private readonly UserRepository $userRepository,
         private readonly PositionRepository $positionRepository,
+        private readonly CreateUserValidator $createUserValidator,
     ) {
     }
 
     /**
      * @throws ImageException
+     * @throws UniqueUserEmailException
+     * @throws UniqueUserPhoneException
      */
     public function handle(StoreUserDTO $storeUserDTO): User
     {
+        $this->createUserValidator->validate($storeUserDTO);
+
         $userPosition = $this->findUserPosition($storeUserDTO->getPositionId());
 
         if (!$userPosition) {

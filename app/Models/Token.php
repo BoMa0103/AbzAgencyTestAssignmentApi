@@ -36,6 +36,7 @@ class Token extends Authenticatable
      */
     protected $fillable = [
         'token',
+        'expires_in',
     ];
 
     public function isExpired(int $timestamp): bool

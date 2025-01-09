@@ -10,6 +10,8 @@ namespace App\Services\Users;
 use App\Models\User;
 use App\Services\Users\DTO\SearchUsersDTO;
 use App\Services\Users\DTO\StoreUserDTO;
+use App\Services\Users\Exceptions\UniqueUserEmailException;
+use App\Services\Users\Exceptions\UniqueUserPhoneException;
 use App\Services\Users\Handlers\CreateUserHandler;
 use App\Services\Users\Repositories\UserRepository;
 use Illuminate\Support\Collection;
@@ -40,8 +42,8 @@ class UsersService
     }
 
     /**
-     * @param StoreUserDTO $dto
-     * @return User
+     * @throws UniqueUserEmailException
+     * @throws UniqueUserPhoneException
      * @throws ImageException
      */
     public function createUser(StoreUserDTO $dto): User

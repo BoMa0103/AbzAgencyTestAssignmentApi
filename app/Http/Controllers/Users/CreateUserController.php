@@ -8,44 +8,27 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Users\Requests\CreateUserRequest;
+use Exception;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Nette\Utils\ImageException;
 
 class CreateUserController extends BaseUsersController
 {
     public function __invoke(
         CreateUserRequest $request,
-        Request $httpRequest,
     ): JsonResponse {
-        $token = $httpRequest->header('Token');
-
-        if (! $token) {
+        try {
+            $token = $this->getTokensService()->validateToken($request);
+        } catch (Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Token is required',
-            ], 401);
-        }
-
-        $token = $this->getTokensService()->findToken($token);
-
-        if (! $token) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Invalid token',
-            ], 401);
-        }
-
-        if ($token->isExpired(now()->timestamp)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Token is expired',
+                'message' => $e->getMessage(),
             ], 401);
         }
 
         try {
             $userId = $this->getUsersService()->createUser($request->getDTO())->id;
-        } catch (ImageException $e) {
+        } catch (ImageException|Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => $e->getMessage(),
