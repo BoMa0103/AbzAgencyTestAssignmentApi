@@ -16,4 +16,9 @@ class PositionRepository
     {
         return Position::all();
     }
+
+    public function findById(int $id): ?Position
+    {
+        return Position::find($id);
+    }
 }

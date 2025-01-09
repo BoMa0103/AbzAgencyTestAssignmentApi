@@ -13,6 +13,8 @@ use App\Services\Users\DTO\StoreUserDTO;
 use App\Services\Users\Handlers\CreateUserHandler;
 use App\Services\Users\Repositories\UserRepository;
 use Illuminate\Support\Collection;
+use Nette\Utils\ImageException;
+use Nette\Utils\UnknownImageFileException;
 
 class UsersService
 {
@@ -37,7 +39,12 @@ class UsersService
         return $this->userRepository->findById($id);
     }
 
-    public function createUser(StoreUserDTO $dto): int
+    /**
+     * @param StoreUserDTO $dto
+     * @return User
+     * @throws ImageException
+     */
+    public function createUser(StoreUserDTO $dto): User
     {
         return $this->createUserHandler->handle($dto);
     }

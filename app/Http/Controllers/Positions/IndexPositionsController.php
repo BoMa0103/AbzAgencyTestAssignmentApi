@@ -25,7 +25,7 @@ class IndexPositionsController extends BasePositionsController
 
         return response()->json([
             'success' => true,
-            'positions' => new PositionResource($positions),
+            'positions' => PositionResource::collection($positions),
         ]);
     }
 }

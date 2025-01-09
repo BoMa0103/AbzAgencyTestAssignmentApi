@@ -21,6 +21,7 @@ class UserRepository
         return User::query()
             ->limit($limit)
             ->offset($offset)
+            ->orderByDesc('created_at')
             ->get();
     }
 
@@ -34,7 +35,7 @@ class UserRepository
         return User::find($id);
     }
 
-    public function createFromArray(array $data): int
+    public function createFromArray(array $data): User
     {
         return User::create($data);
     }

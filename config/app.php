@@ -135,11 +135,5 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Artwl\LaravelTinify\LaravelTinifyServiceProvider::class,
     ])->toArray(),
-
-    'aliases' => Facade::defaultAliases()->merge([
-        'Tinify' => Artwl\LaravelTinify\Facades\Tinify::class
-    ])->toArray(),
-
 ];
