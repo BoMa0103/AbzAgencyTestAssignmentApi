@@ -1,9 +1,4 @@
 <?php
-/**
- * Description of ApiRoutesProvider.php
- * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
- */
 
 namespace App\Services\Routes\Api;
 

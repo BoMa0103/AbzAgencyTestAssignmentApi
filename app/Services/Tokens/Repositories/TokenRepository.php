@@ -1,9 +1,4 @@
 <?php
-/**
- * Description of TokenRepository.php
- * @copyright Copyright (c) DOTSPLATFORM, LLC
- * @author    Bogdan Mamontov <bohdan.mamontov@dotsplatform.com>
- */
 
 namespace App\Services\Tokens\Repositories;
 
