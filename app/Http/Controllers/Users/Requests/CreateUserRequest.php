@@ -17,7 +17,7 @@ class CreateUserRequest extends FormRequest
         return [
             'name' => 'required|string|min:2|max:60',
             'email' => 'required|email',
-            'phone' => 'required|string',
+            'phone' => 'required|regex:/^\+380\d{9}$/',
             'position_id' => 'required|numeric',
             'photo' => 'required|string',
         ];

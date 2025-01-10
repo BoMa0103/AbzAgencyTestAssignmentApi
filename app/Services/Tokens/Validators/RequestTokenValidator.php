@@ -11,7 +11,6 @@ use App\Models\Token;
 use App\Services\Tokens\Repositories\TokenRepository;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class RequestTokenValidator
 {
@@ -25,10 +24,6 @@ class RequestTokenValidator
      */
     public function validate(Request $request): Token
     {
-        Log::warning('Token validation', [
-            'headers' => $request->headers,
-            'body' => $request->all(),
-        ]);
         $token = $request->header('Token');
 
         if (! $token) {
